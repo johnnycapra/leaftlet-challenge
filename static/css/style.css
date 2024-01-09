@@ -2,9 +2,37 @@ body {
   padding: 0;
   margin: 0;
 }
-
 #map,
 body,
 html {
   height: 100%;
 }
+.leaflet-popup-content {
+  text-align: center;
+}
+.legend {
+  color: #555;
+  padding: 6px 8px;
+  font: 12px Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.legend ul {
+  list-style-type: none;
+  padding: 0;
+}
+.legend li {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.color-box {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
