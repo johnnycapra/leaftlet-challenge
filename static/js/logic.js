@@ -44,23 +44,23 @@ let myMap = L.map("map", {
       let div = L.DomUtil.create("div", "info legend");
     
       // Add legend entries using getColor function (assuming you have this function)
-      let mags = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
+      let depthChart = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
       let colors = ["#95FA09", "#D5F60A", "#F5D611", "#FBA921","#FA914B","#FC4653"];
       let legendList = "<ul>";
 
-      let legendInfo = "<h3>Magnitudes</h1>"
+      let legendInfo = "<h3>Legend</h1>"
       "<div class=\"labels\">" +
-        "<div class=\"min\">" + mags[0] + "</div>" +
-        "<div class=\"max\">" + mags[mags.length - 1] + "</div>" +
+        "<div class=\"min\">" + depthChart[0] + "</div>" +
+        "<div class=\"max\">" + depthChart[depthChart.length - 1] + "</div>" +
       "</div>";
         
       div.innerHTML += legendInfo;
 
-      mags.forEach(function (mag, i) {
+      depthChart.forEach(function (depths, i) {
         legendList +=
           "<li>" +
           "<span class=\"color-box\" style=\"background-color: " + colors[i] + "\"></span>" +
-          mag +
+          depths +
           "</li>";
       });
     
@@ -73,17 +73,17 @@ let myMap = L.map("map", {
     legend.addTo(myMap);
     });
 // Function to determine color based on depth
-function getColor(magnitude) {
+function getColor(depth) {
     switch(true) {
-        case magnitude > 5:
+        case depth >= 90:
             return "#FC4653";
-        case magnitude > 4:
+        case (depth >= 70 && depth < 90):
             return "#FA914B";
-        case magnitude > 3:
+        case (depth >= 50 && depth < 70):
             return "#FBA921";
-        case magnitude > 2:
+        case (depth >= 30 && depth < 50):
             return "#F5D611";
-        case magnitude > 1:
+        case (depth >= 10 && depth < 30):
             return "#D5F60A";
         default:
             return "#95FA09"
