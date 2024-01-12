@@ -45,7 +45,7 @@ let myMap = L.map("map", {
     
       // Add legend entries using getColor function (assuming you have this function)
       let mags = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
-      let colors = ["#2cba00", "#a3ff00", "#fff400", "#ffa700","#ff5349","#ff0000"];
+      let colors = ["#95FA09", "#D5F60A", "#F5D611", "#FBA921","#FA914B","#FC4653"];
       let legendList = "<ul>";
 
       let legendInfo = "<h3>Magnitudes</h1>"
@@ -76,17 +76,17 @@ let myMap = L.map("map", {
 function getColor(magnitude) {
     switch(true) {
         case magnitude > 5:
-            return "#ff0000";
+            return "#FC4653";
         case magnitude > 4:
-            return "#ff5349";
+            return "#FA914B";
         case magnitude > 3:
-            return "#ffa700";
+            return "#FBA921";
         case magnitude > 2:
-            return "#fff400";
+            return "#F5D611";
         case magnitude > 1:
-            return "#a3ff00";
+            return "#D5F60A";
         default:
-            return "#2cba00"
+            return "#95FA09"
 
     }
 }
