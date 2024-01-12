@@ -12,6 +12,7 @@ let myMap = L.map("map", {
   
     // Use D3 to fetch the JSON data
     d3.json(url).then(function(data) {
+
     // Loop through the earthquake data
     data.features.forEach(function(feature) {
         // Extract magnitude, depth, latitude, and longitude
@@ -23,7 +24,7 @@ let myMap = L.map("map", {
         // Customize marker size and color based on magnitude and depth
         let marker = L.circleMarker([latitude, longitude], {
         radius: magnitude * 5, // Adjust the multiplier as needed
-        fillColor: getColor(magnitude), // Implement getColor function
+        fillColor: getColor(depth), // Implement getColor function
         color: "#000",
         weight: 1,
         opacity: 1,
@@ -48,11 +49,8 @@ let myMap = L.map("map", {
       let colors = ["#95FA09", "#D5F60A", "#F5D611", "#FBA921","#FA914B","#FC4653"];
       let legendList = "<ul>";
 
-      let legendInfo = "<h3>Legend</h1>"
-      "<div class=\"labels\">" +
-        "<div class=\"min\">" + depthChart[0] + "</div>" +
-        "<div class=\"max\">" + depthChart[depthChart.length - 1] + "</div>" +
-      "</div>";
+      let legendInfo = "<h3>Legend</h1>" 
+    
         
       div.innerHTML += legendInfo;
 
@@ -72,21 +70,23 @@ let myMap = L.map("map", {
     
     legend.addTo(myMap);
     });
-// Function to determine color based on depth
-function getColor(depth) {
-    switch(true) {
-        case depth >= 90:
-            return "#FC4653";
-        case (depth >= 70 && depth < 90):
-            return "#FA914B";
-        case (depth >= 50 && depth < 70):
-            return "#FBA921";
-        case (depth >= 30 && depth < 50):
-            return "#F5D611";
-        case (depth >= 10 && depth < 30):
-            return "#D5F60A";
-        default:
-            return "#95FA09"
+    // Function to determine color based on depth
+    function getColor(depth) {
+        switch(true) {
+            case depth >= 90:
+                return "#FC4653";
+            case (depth >= 70 && depth < 90):
+                return "#FA914B";
+            case (depth >= 50 && depth < 70):
+                return "#FBA921";
+            case (depth >= 30 && depth < 50):
+                return "#F5D611";
+            case (depth >= 10 && depth < 30):
+                return "#D5F60A";
+            case (depth > -10 && depth < 10):
+                return "#95FA09"
+            default:
+                return "black";
 
+        }
     }
-}
