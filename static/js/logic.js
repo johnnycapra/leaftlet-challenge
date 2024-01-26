@@ -32,7 +32,7 @@ let myMap = L.map("map", {
         });
 
         // Bind popup with additional information
-        marker.bindPopup(`<b>Magnitude:</b> ${magnitude}<br><b>Depth:</b> ${depth} km`);
+        marker.bindPopup(`<b>Magnitude:</b> ${magnitude}<br><b>Depth:</b> ${depth} km<br><b>Location:</b> ${latitude}, ${longitude}`);
 
         // Add marker to the map
         marker.addTo(myMap);
