@@ -98,7 +98,6 @@ legend.onAdd = function () {
 
     legendList += "</ul>";
     div.innerHTML += legendList;
-    // Add more legend entries as needed
     return div;
 };
 
